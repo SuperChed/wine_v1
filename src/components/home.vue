@@ -1,8 +1,8 @@
 
 <script>
 
-
 export default {
+
 
   data() {
 	  return {
@@ -24,10 +24,11 @@ export default {
 		}
 	  },
 	  methods: {
-	  	linkHandle() {
+	  	linkHandle(url) {
 	  	console.log('yup')
-	  		window.location.href = "http://www.w3schools.com"
-	  		
+	  		// window.location.href = url
+			window.open(url)  
+			
 	  	}
 	  }
 	  
@@ -55,17 +56,17 @@ export default {
       <z-spot
       	v-for="(wine, index) in wines"
       	class="wine_spot"
-      	propsy="props yo"
+      	:title="wine.code"
       	:ref="wine.code"
         :wine="wine"
       	:id="wine.red_white"
-      	:key="index"
+      	:key="wine.code"
         :angle="270 + (200 / wines.length * index)"
         size="m"
         :distance="130"
         label=""
         label-pos="right"
-        :to-view= 'wine.code'
+        to-view="single"
         >
         {{wine.name}}
       </z-spot>
@@ -73,16 +74,15 @@ export default {
       <!-- links -->
       <z-spot
         v-for="(link, index) in links"
-		:key=index
-        style="background-color: orange; border-width: 4px; border-color: var(--background-color);"
-        @click="linkHandle"
+		:key="'link'+index"
+        style="background-color: orange; border-width: 4px; border-color: var(--background-color); overflow: hidden;"
         :angle="210 + (-90 / links.length * index)"
         button
         size="m"
         :distance="130"
         >
-<!--         <i style="color: var( ~~accent-text-color)" class="fas fa-shopping-bag"></i> -->
-       <span style="color: var( --accent-text-color)">{{ link.text }}</span>
+<!-- <i style="color: var( ~~accent-text-color)" class="fas fa-shopping-bag"></i> -->
+	   <p style="color: var( --accent-text-color); padding: 20px; text-align: center;" @click="linkHandle(link.url)">{{ link.text }}</p>
       </z-spot> 
       
     </div>

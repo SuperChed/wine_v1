@@ -7,7 +7,8 @@ export default {
 	data() {
 		return{
 			// this passes the obj w all info. would only need to change
-			  // the wine.code possibly with   
+			  // the wine.code possibly with 
+			  
 			wine: this.$parent.$children[0].$refs[this.testy][0].$attrs.wine,
 			// these can be lumped into the orig wines objects and accessed
 			  // with dot notation in components. like   this.wine.aroma[storeVarAsIndex]

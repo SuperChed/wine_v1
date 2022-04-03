@@ -21,14 +21,20 @@ import cf from './components/wines/cab_franc'
 import me from './components/wines/merlot'
 import dr from './components/wines/durant_red'
 import pv from './components/wines/petit_verdot'
+import single from './components/wines/single'
 
 export default {
 
   components: {
-    home, palate, finish, aroma, dw, ch, pg, re, cf, me, dr, pv
+    home, palate, finish, aroma, dw, ch, pg, re, cf, me, dr, pv, single
   },
   mounted () {
     this.$zircle.setView('home')
+  },
+  provide: function() {
+    return {
+      testy: 'cf'
+    }
   }
 }
 
